@@ -11,10 +11,12 @@ html(lang='')
         title
         //- Bootstrap core CSS
         link(href='/css/bootstrap.min.css', rel='stylesheet')
-        // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-        //if lt IE 9
+
+        //- Custom CSS
+        link(href='/css/signin.css', rel='stylesheet')
+        
     body
-        h1 Welcome
         block content
         script(src='/js/jquery.min.js')
         script(src='/js/bootstrap.min.js')
+        script(src='/js/login.js')

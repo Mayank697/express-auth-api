@@ -1,9 +1,9 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title login
-    body 
-        h1 login 
+extends layout
+
+block content 
+    .container.text-center 
+        form.form-signin(method="post", action="/")
+            h2.h3.mb-3.font-weight-normal Please sign in
+            input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='')
+            input#inputPassword.form-control(type='password', placeholder='Password', required='')
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

@@ -1,9 +1,14 @@
 ﻿const express = require('express');
+const app = express();
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const userService = require('./user.service');
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);

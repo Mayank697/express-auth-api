@@ -14,7 +14,9 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'pug');
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.urlencoded({ extended: true }));
 
 // api routes
 app.use('/users', require('./users/users.controller'));
