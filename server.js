@@ -5,16 +5,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const errorHandler = require('_middleware/error-handler');
 const path = require('path');
-var cookieParser = require('cookie-parser');
 const routes = require('./routes/index');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
-app.use(cookieParser());
-
-global.app = app;
 
 app.set('views', path.join(__dirname, 'view'));
 // app.set('view engine', 'pug');

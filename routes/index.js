@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-import { app } from '../server';
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -15,7 +14,6 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/dashboard', (req, res) => {
-    console.log(req.app.cookies);
     res.send("welcome");
 })
 
