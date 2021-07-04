@@ -10,7 +10,11 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('signup');
+})
+
+router.get('/dashboard', (req, res) => {
+    res.send("welcome");
 })
 
 module.exports = router;
