@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const errorHandler = require('_middleware/error-handler');
 const path = require('path');
 const routes = require('./routes/index');
+var cookieParser = require('cookie-parser')////changed =======================
+app.use(cookieParser())////changed =======================
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

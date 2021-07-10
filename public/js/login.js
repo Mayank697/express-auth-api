@@ -15,12 +15,12 @@ function login(jsonString) {
     xhr.open("POST", "/users/authenticate");
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(jsonString);
-    xhr.onload = function() {
+    xhr.onload = function () {
         console.log(this.responseText);
         var res = JSON.parse(this.responseText);
         if (res.message == "Username or password is incorrect") console.log(this.responseText);
         else {
-            document.cookie = "token=" + res.token + ";path=/dashboard";
+            // document.cookie = "token=" + res.token + ";path=/dashboard";
             window.location.href = "/dashboard";
         }
     }

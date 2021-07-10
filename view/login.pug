@@ -1,9 +1,0 @@
-extends layout
-
-block content 
-    .container.text-center 
-        form.form-signin(method="post", action="/")
-            h2.h3.mb-3.font-weight-normal Please sign in
-            input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='')
-            input#inputPassword.form-control(type='password', placeholder='Password', required='')
-            button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

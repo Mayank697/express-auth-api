@@ -31,7 +31,9 @@ function authenticateSchema(req, res, next) {
 
 function authenticate(req, res, next) {
     userService.authenticate(req.body)
-        .then(user => res.json(user))
+        .then(user => {
+            res.cookie("auth",user) ////// set cookie
+            res.json(user)})
         .catch(next);
 }
 
