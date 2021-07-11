@@ -11,7 +11,7 @@ app.use(express.json);
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-router.post('/create-record', createSchema, create);
+router.post('/create-record', authorize(), createSchema, create);
 router.get('/', authorize(), getAll);
 router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, update);
