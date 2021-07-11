@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 const errorHandler = require('_middleware/error-handler');
 const path = require('path');
 const routes = require('./routes/index');
-var cookieParser = require('cookie-parser')////changed =======================
-app.use(cookieParser())////changed =======================
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use(cors());
 
 app.set('views', path.join(__dirname, 'view'));
 // app.set('view engine', 'pug');
-app.set('view engine', 'ejs'); //////////////ejs
+app.set('view engine', 'ejs'); //ejs
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // api routes
 app.use('/users', require('./users/users.controller'));
+app.use('/records', require('./records/records.controller'));
 
 // routes
 app.use('/', routes);
