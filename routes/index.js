@@ -1,39 +1,37 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
-const config = require('config.json');////changed =======================
-const jwt = require('jsonwebtoken');////changed =======================
-
-
+const config = require('config.json');
+const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-    res.render('index');
+    if (req.cookies.auth) {
+        res.render('index', { title: "landing_page", auth: req.cookies.auth });
+    } else {
+        res.render('index', { title: "landing_page", auth: "false" });
+    }
 });
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', { title: "login_page" });
 })
 
 router.get('/register', (req, res) => {
-    res.render('signup');
+    res.render('signup', { title: "signup_page" });
 })
 
 router.get('/dashboard', (req, res) => {
     // console.log("cookie is the game",req.cookies.auth);
     if (req.cookies.auth) {
-        jwt.verify(req.cookies.auth.token, config.secret, function (err, decoded) {
+        jwt.verify(req.cookies.auth.token, config.secret, function(err, decoded) {
             // console.log("decoded bhai yhai hai culprit", req.cookies.auth)
             if (!err) {
                 data = {
                     username: req.cookies.auth.firstName,
                     email: req.cookies.auth.username
                 };
-                // readProduct(function (products) {
-                //     readCart(function (cart) {
-                //         res.render("dashboard", { data: data, cart_items: cart })
-                //     })
-                // })
-                records = [
-                    {
+
+                records = [{
                         id: 1,
                         name: "Rich-Boss India Pvt Ltd. - Chirya",
                         address: "Jaipur",
@@ -75,15 +73,13 @@ router.get('/dashboard', (req, res) => {
                         city: "Lakheri",
                         state: "Rajasthan"
                     }
-                ]
-                res.render("dashboard",{records:records, data:data})
-            }
-            else {
+                ];
+                res.render("dashboard", { title: "dashboard", records: records, data: data })
+            } else {
                 res.redirect("/");
             }
         });
-    }
-    else {
+    } else {
         res.redirect("/");
     }
 })
