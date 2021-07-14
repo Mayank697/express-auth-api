@@ -1,0 +1,12 @@
+#recordList {
+    table-layout: fixed;
+    width: 100% !important;
+}
+
+#recordList td,
+#recordList th {
+    width: auto !important;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
