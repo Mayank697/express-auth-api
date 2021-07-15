@@ -76,7 +76,9 @@ router.get('/dashboard', (req, res) => {
                         state: "Rajasthan"
                     }
                 ]
-                res.render("dashboard",{records:records, data:data})
+                let token = req.cookies.auth.token;
+                // res.render("dashboard",{records:records, data:data})
+                res.render("dashboard",{data:data, token: token})
             }
             else {
                 res.redirect("/");

@@ -28,7 +28,7 @@ async function update(id, params) {
     // copy params to record and save
     Object.assign(record, params);
     await record.save;
-
+    console.log(record.get());
     return omitHash(record.get());
 }
 
