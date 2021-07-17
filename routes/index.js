@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const config = require('config.json');////changed =======================
-const jwt = require('jsonwebtoken');////changed =======================
+const config = require('config.json'); ////changed =======================
+const jwt = require('jsonwebtoken'); ////changed =======================
 
 
 
@@ -20,7 +20,7 @@ router.get('/register', (req, res) => {
 router.get('/dashboard', (req, res) => {
     // console.log("cookie is the game",req.cookies.auth);
     if (req.cookies.auth) {
-        jwt.verify(req.cookies.auth.token, config.secret, function (err, decoded) {
+        jwt.verify(req.cookies.auth.token, config.secret, function(err, decoded) {
             // console.log("decoded bhai yhai hai culprit", req.cookies.auth)
             if (!err) {
                 data = {
@@ -32,8 +32,7 @@ router.get('/dashboard', (req, res) => {
                 //         res.render("dashboard", { data: data, cart_items: cart })
                 //     })
                 // })
-                records = [
-                    {
+                records = [{
                         id: 1,
                         name: "Rich-Boss India Pvt Ltd. - Chirya",
                         address: "Jaipur",
@@ -76,15 +75,14 @@ router.get('/dashboard', (req, res) => {
                         state: "Rajasthan"
                     }
                 ]
-                res.render("dashboard",{records:records, data:data})
-            }
-            else {
+                res.render("dashboard", { records: records, data: data })
+            } else {
                 res.redirect("/");
             }
         });
-    }
-    else {
+    } else {
         res.redirect("/");
+
     }
 })
 router.get('/logout', (req, res) => {
