@@ -1,20 +1,23 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const config = require('config.json'); ////changed =======================
-const jwt = require('jsonwebtoken'); ////changed =======================
-
-
+const jwt = require('jsonwebtoken'); ////changed ======================
 
 router.get('/', (req, res) => {
-    res.render('index');
+    if (req.cookies.auth) {
+        res.render('index', { title: "landing_page", auth: req.cookies.auth });
+    } else {
+        res.render('index', { title: "landing_page", auth: "false" });
+    }
 });
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', { title: "login_page" });
 })
 
 router.get('/register', (req, res) => {
-    res.render('signup');
+    res.render('signup', { title: "signup_page" });
 })
 
 router.get('/dashboard', (req, res) => {

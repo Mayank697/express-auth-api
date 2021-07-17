@@ -1,23 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- custom css -->
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/landing.css">
-    <title>Landing</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href='/css/bootstrap.min.css'>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href='https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css'>
 </head>
 
 <body>
-    <div class="container">
-        <h1>CUSTOM PORTAL</h1><br>
-        <a href="/login">Login</a>
-        <a href="/register">SignUp</a>
-        <h3>Imagine yourself walking down a street filled with stores. You’re just window shopping until something
-            catches your eye. It could be the sales sign hanging in the window. Maybe it was the nice jacket on the
-            mannequin. Or the store had an inviting atmosphere that drew you in. </h3>
-    </div>
+    <% if(title == "landing_page" && auth == "false") { %>
+        <div class="header">
+            <a href="/" class="logo">Custom Portal</a>
+            <div class="header-right">
+                <a href="/login">Signin</a>
+                <a href="/register">Signup</a>
+            </div>
+        </div>
+
+        <div style="padding-left:20px">
+            <h1>Welcome to Custom Portal</h1>
+        </div>
+
+        <% } else if(title == "landing_page" && auth != "false") { %>
+            <div class="header">
+                <a href="/" class="logo">Custom Portal</a>
+            </div>
+
+            <!-- <div style="padding-left:20px">
+                <h1></h1>
+            </div> -->
+            <% } else if(title == "login_page") { %>
+                <div class="header">
+                    <a href="/" class="logo">Custom Portal</a>
+                    <div class="header-right">
+                        <a href="/register">Signup</a>
+                    </div>
+                </div>
+                <% } else if(title == "signup_page") { %>
+                    <div class="header">
+                        <a href="/" class="logo">Custom Portal</a>
+                        <div class="header-right">
+                            <a href="/login">Signin</a>
+                        </div>
+                    </div>
+                    <% } else if(title == "dashboard") { %>
+                        <div class="header">
+                            <a href="/" class="logo">Custom Portal</a>
+                            <span style="color: white; margin-left: 50%;">
+                            Welcome <span class="text-info">
+                                <%= username %>
+                            </span> this is your custom portal.
+                            </span>
+                            <div class="header-right">
+                                <a href="/logout">Logout</a>
+                            </div>
+                        </div>
+                        <% } %>
+
 </body>
 
 </html>

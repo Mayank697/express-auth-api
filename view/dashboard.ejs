@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='/css/bootstrap.min.css'>
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css'>
-    <link rel="stylesheet" href='https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css'>
-    <title>Dashboard</title>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Custom Portal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <span class="navbar-text mx-3">
-                    Welcome <span class="text-info">
-                        <%= data.username %>
-                    </span> this is your custom portal.
-                </span>
-                <span class="d-flex">
-                    <a href="/logout"><button type="button" class="btn btn-primary rounded-pill">Logout</button></a>
-                </span>
-            </div>
-        </div>
-    </nav>
-
+<%- include('index.ejs', {title: title, username: data.username}) %>
     <div class="container">
         <div class="row">
             <h1>Records</h1>
@@ -98,10 +58,10 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#recordList').DataTable();
         });
     </script>
-</body>
+    </body>
 
-</html>
+    </html>
