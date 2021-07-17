@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const config = require('config.json');
-const jwt = require('jsonwebtoken');
+const config = require('config.json'); ////changed =======================
+const jwt = require('jsonwebtoken'); ////changed ======================
 
 router.get('/', (req, res) => {
     if (req.cookies.auth) {
@@ -30,7 +30,11 @@ router.get('/dashboard', (req, res) => {
                     username: req.cookies.auth.firstName,
                     email: req.cookies.auth.username
                 };
-
+                // readProduct(function (products) {
+                //     readCart(function (cart) {
+                //         res.render("dashboard", { data: data, cart_items: cart })
+                //     })
+                // })
                 records = [{
                         id: 1,
                         name: "Rich-Boss India Pvt Ltd. - Chirya",
@@ -73,14 +77,15 @@ router.get('/dashboard', (req, res) => {
                         city: "Lakheri",
                         state: "Rajasthan"
                     }
-                ];
-                res.render("dashboard", { title: "dashboard", records: records, data: data })
+                ]
+                res.render("dashboard", { records: records, data: data })
             } else {
                 res.redirect("/");
             }
         });
     } else {
         res.redirect("/");
+
     }
 })
 router.get('/logout', (req, res) => {
