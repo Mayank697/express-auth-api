@@ -1,67 +1,104 @@
-<%- include('index.ejs', {title: title, username: data.username}) %>
-    <div class="container">
-        <div class="row">
-            <h1>Records</h1>
-            <table id="recordList" class="table table-striped">
-                <thead class="table-success">
-                    <tr>
-                        <th scope="col">Sno</th>
-                        <th scope="col">Plant Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">City</th>
-                        <th scope="col">State</th>
-                        <th scope="col" style="width:20%">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% var sno=1 %>
-                        <%if (records.length> 0) { %>
-                            <% records.forEach(function(row) { %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= sno++ %>
-                                    </th>
-                                    <td>
-                                        <%= row.name %>
-                                    </td>
-                                    <td>
-                                        <%= row.address %>
-                                    </td>
-                                    <td>
-                                        <%= row.city %>
-                                    </td>
-                                    <td>
-                                        <%= row.state %>
-                                    </td>
-                                    <td>
-                                        <a href="/delete" class="btn btn-outline-danger btn-sm">Delete</a>
-                                        <a href="/update" class="btn btn-outline-primary btn-sm">Update</a>
-                                    </td>
-                                </tr>
-                                <% })} else{ %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/css/bootstrap.min.css'>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href='https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Custom Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <span class="navbar-text mx-3 custom_portal_user">
+                    Welcome <span class="text-info">
+                        <%= data.username %>
+                    </span> this is your custom portal.
+                </span>
+                <span class="d-flex">
+                    <a href="/logout"><button type="button" class="btn btn-primary rounded-pill">Logout</button></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="container">
+            <div class="row">
+                <h1>Records</h1>
+                <table id="recordList" class="table table-striped">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Sno</th>
+                            <th scope="col">Plant Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
+                            <th scope="col" style="width:20%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var sno=1 %>
+                            <%if (records.length> 0) { %>
+                                <% records.forEach(function(row) { %>
                                     <tr>
-                                        <td colspan="6">
-                                            No Record Found
+                                        <th scope="row">
+                                            <%= sno++ %>
+                                        </th>
+                                        <td>
+                                            <%= row.name %>
+                                        </td>
+                                        <td>
+                                            <%= row.address %>
+                                        </td>
+                                        <td>
+                                            <%= row.city %>
+                                        </td>
+                                        <td>
+                                            <%= row.state %>
+                                        </td>
+                                        <td>
+                                            <a href="/delete" class="btn btn-outline-danger btn-sm">Delete</a>
+                                            <a href="/update" class="btn btn-outline-primary btn-sm">Update</a>
                                         </td>
                                     </tr>
-                                    <% } %>
-                </tbody>
-            </table>
+                                    <% })} else{ %>
+                                        <tr>
+                                            <td colspan="6">
+                                                No Record Found
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
-    </div>
 
 
 
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#recordList').DataTable();
+            });
+        </script>
+</body>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#recordList').DataTable();
-        });
-    </script>
-    </body>
-
-    </html>
+</html>
