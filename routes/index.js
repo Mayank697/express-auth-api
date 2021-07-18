@@ -19,21 +19,19 @@ router.get('/register', (req, res) => {
 
 router.get('/dashboard', (req, res) => {
     if (req.cookies.auth) {
-        jwt.verify(req.cookies.auth.token, config.secret, function (err, decoded) {
+        jwt.verify(req.cookies.auth.token, config.secret, function(err, decoded) {
             if (!err) {
                 data = {
                     username: req.cookies.auth.firstName,
                     email: req.cookies.auth.username
                 };
                 let token = req.cookies.auth.token;
-                res.render("dashboard",{data:data, token: token})
-            }
-            else {
+                res.render("dashboard", { data: data, token: token })
+            } else {
                 res.redirect("/");
             }
         });
-    }
-    else {
+    } else {
         res.redirect("/");
     }
 })

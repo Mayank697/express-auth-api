@@ -1,51 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&display=swap');
-html {
-    background-color: rgb(206, 206, 206);
+* {
+    box-sizing: border-box;
 }
-.container {
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    overflow: hidden;
+    background-color: black;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: white;
     text-align: center;
+    padding: 12px;
+    margin-right: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
 }
-h1 {
-    font-family: 'Baloo Tammudu 2';
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header a:hover {
+    background-color: #ddd;
     color: black;
 }
-a {
+
+.header a.active {
+    background-color: dodgerblue;
     color: white;
-    border-radius: 50px;
-    background-color: #04AA6D;
-    text-decoration: none;
-    padding: 12px 20px;
-    margin: 8px 10px;
-    border: none;
-    cursor: pointer;
-    width: 100px;
 }
-a:hover {
-    opacity: 0.8;
+
+.header-right {
+    float: right;
 }
-h3{
-    display: block;
-    text-align: center;
-    font-size: 15px;
-    width: 400px;
-    margin: auto;
-    margin-top: 50px;
-    border-radius: 20px;
-    padding: 10vh;
-    background-color: rgba(220, 224, 228, 0.342);
-    color: rgb(0, 0, 0);
-}
-@media only screen and (max-width: 600px) {
-    h3{
-        display: none;
-    }
-    h1 {
-        font-family: sans-serif;
-    }
-    a {
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
         display: block;
-        margin: 0 auto;
-        margin-bottom: 10px;
+        text-align: left;
+    }
+    .header-right {
+        float: none;
     }
 }
