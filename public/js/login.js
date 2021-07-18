@@ -20,6 +20,7 @@ function login(jsonString) {
         if (res.message == "Username or password is incorrect") console.log(this.responseText);
         else {
             window.location.href = "/dashboard";
+
         }
     }
 }
