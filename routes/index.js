@@ -4,6 +4,9 @@ const router = express.Router();
 const config = require('config.json');
 const jwt = require('jsonwebtoken');
 
+
+
+
 router.get('/', (req, res) => {
     if (req.cookies.auth) {
         res.render('index', { title: "landing_page", auth: req.cookies.auth });
