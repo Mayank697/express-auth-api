@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.set('views', path.join(__dirname, 'view'));
-// app.set('view engine', 'pug');
 app.set('view engine', 'ejs'); //ejs
 
 app.use(express.static(path.join(__dirname, 'public')));

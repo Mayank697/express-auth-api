@@ -1,0 +1,31 @@
+<% var sno=1 %>
+                        <%if (records.length> 0) { %>
+                            <% records.forEach(function(row) { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= sno++ %>
+                                    </th>
+                                    <td>
+                                        <%= row.name %>
+                                    </td>
+                                    <td>
+                                        <%= row.address %>
+                                    </td>
+                                    <td>
+                                        <%= row.city %>
+                                    </td>
+                                    <td>
+                                        <%= row.state %>
+                                    </td>
+                                    <td>
+                                        <a href="/delete" class="btn btn-outline-danger btn-sm">Delete</a>
+                                        <a href="/update" class="btn btn-outline-primary btn-sm">Update</a>
+                                    </td>
+                                </tr>
+                                <% })} else{ %>
+                                    <tr>
+                                        <td colspan="6">
+                                            No Record Found
+                                        </td>
+                                    </tr>
+                                    <% } %>
