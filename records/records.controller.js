@@ -22,7 +22,7 @@ router.delete('/:id', authorize(), _delete);
 module.exports = router;
 
 function createSchema(req, res, next) {
-    const schema = Joi.recordsect({
+    const schema = Joi.object({
         name: Joi.string().required(),
         address: Joi.string().required(),
         city: Joi.string().required(),
@@ -51,7 +51,7 @@ function getById(req, res, next) {
 
 function updateSchema(req, res, next) {
 
-    const schema = Joi.recordsect({
+    const schema = Joi.object({
         name: Joi.string().empty(''),
         address: Joi.string().empty(''),
         city: Joi.string().empty(''),
